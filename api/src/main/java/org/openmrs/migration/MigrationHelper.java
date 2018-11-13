@@ -164,6 +164,7 @@ public class MigrationHelper {
 			us.createUser(user, pass);
 			++ret;
 		}
+		System.gc();
 		return ret;
 	}
 	
