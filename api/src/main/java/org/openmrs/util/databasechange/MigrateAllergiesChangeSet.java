@@ -162,7 +162,11 @@ public class MigrateAllergiesChangeSet implements CustomTaskChange {
 		if (rs.next()) {
 			String uuid = rs.getString("property_value");
 			
-			rs = stmt.executeQuery("SELECT concept_id FROM concept WHERE uuid = '" + uuid + "'");
+			String query = "SELECT concept_id FROM concept WHERE uuid = ?";
+			PreparedStatement prevent_sql_inj = connection.prepareStatement(query);
+			prevent_sql_inj.setString(1, uuid);
+			rs = prevent_sql_inj.executeQuery();
+			
 			if (rs.next()) {
 				return rs.getInt("concept_id");
 			}
