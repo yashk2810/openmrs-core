@@ -315,7 +315,7 @@ public class Context {
 	 * @should change locale when become another user
 	 */
 	public static void becomeUser(String systemId) throws ContextAuthenticationException {
-		log.info("systemId: {}", systemId);
+		log.info("Different systemId is used. This is used to become a different user.");
 
 		User user = getUserContext().becomeUser(systemId);
 
