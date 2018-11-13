@@ -279,7 +279,7 @@ public class Context {
 	 * @should not authenticate with null password and proper system id
 	 */
 	public static void authenticate(String username, String password) throws ContextAuthenticationException {
-		log.debug("Authenticating with username: {}", username);
+		log.debug("Authenticating with username");
 
 		if (Daemon.isDaemonThread()) {
 			log.error("Authentication attempted while operating on a "
